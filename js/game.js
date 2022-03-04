@@ -1,8 +1,8 @@
-import TitleScene from './title_screen';
-import CreditsScene from './credits';
-import LevelOne from './level_one';
-import LevelTwo from './level_two';
-import LevelThree from './level_three';
+import TitleScene from './title_screen.js';
+import CreditsScene from './credits.js';
+import LevelOne from './level_one.js';
+import LevelTwo from './level_two.js';
+import LevelThree from './level_three.js';
 
 var config = {
     type: Phaser.AUTO,
