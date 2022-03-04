@@ -95,12 +95,12 @@ class LevelOne extends Phaser.Scene {
             setXY: { x: 12, y: 0, stepX: 250 }
         });
 
-       /* bombs.children.iterate(function(child) {
+        bombs.children.iterate(function(child) {
             child.setBounce(Phaser.Math.FloatBetween(0.1, 1));
             child.setCollideWorldBounds(true);
             child.setVelocity(Phaser.Math.Between(-200, 200), 20);
             child.allowGravity = false;
-        });*/
+        });
 
         //  The score
         scoreText = this.add.text(16, 50, 'score: 0', { fontSize: '32px', fill: '#000' });
