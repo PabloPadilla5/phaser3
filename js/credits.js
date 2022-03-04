@@ -1,6 +1,6 @@
 class CreditsScene extends Phaser.Scene {
     constructor() {
-        super("creditsScene");
+        super("credits_scene");
     }
 
     create() {
@@ -17,7 +17,7 @@ class CreditsScene extends Phaser.Scene {
     }
 
     goBack() {
-        this.scene.switch('titleScene');
+        this.scene.switch('title_scene');
     }
 }
 

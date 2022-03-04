@@ -1,14 +1,14 @@
-class LevelThree extends Phaser.Scene {
+class LevelOne extends Phaser.Scene {
 	constructor() {
-		super('levelThree');
+		super('level_one');
 	}
 
 	preload() {
-		this.load.image('bg_3', 'assets/background0.png');
+		this.load.image('bg', 'assets/background.jpg');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('star', 'assets/star.png');
         this.load.image('bomb', 'assets/bomb.png');
-        this.load.audio('background_music_3', 'assets/music/background_3.mp3');
+        this.load.audio('background_music', 'assets/music/background_1.mp3');
         this.load.atlas('player1', 'assets/miku.png', 'assets/miku_sprites_map_hash_a.json');
         this.load.atlas('player2', 'assets/rin.png', 'assets/rin_sprites_map_hash.json');
 	}
@@ -17,34 +17,34 @@ class LevelThree extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, 1600 * 4, 800);
         this.physics.world.setBounds(0, 0, 1600 * 4, 800);
 
-        background_music = this.sound.add("background_music_3", { loop: true });
+        background_music = this.sound.add("background_music", { loop: true });
         background_music.play();
 
         game = this;
 
         //  A simple background for our game
-        this.add.image(800, 400, 'bg_3');
-        this.add.image(2400, 400, 'bg_3');
-        this.add.image(4000, 400, 'bg_3');
-        this.add.image(5600, 400, 'bg_3');
+        this.add.image(800, 400, 'bg');
+        this.add.image(2400, 400, 'bg');
+        this.add.image(4000, 400, 'bg');
+        this.add.image(5600, 400, 'bg');
 
         // Player 1 animations
-        //initPlayer1Animations();
+        initPlayer1Animations();
 
         // Player 2 animations
-        //initPlayer2Animations();
+        initPlayer2Animations();
 
         //  The platforms group contains the ground and the 2 ledges we can jump on
         platforms = this.physics.add.staticGroup();
 
         //  Here we create the ground.
         //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-        platforms.create(600, 670, 'ground').setScale(3).refreshBody();
-        platforms.create(1800, 670, 'ground').setScale(3).refreshBody();
-        platforms.create(3000, 670, 'ground').setScale(3).refreshBody();
-        platforms.create(4200, 670, 'ground').setScale(3).refreshBody();
-        platforms.create(5400, 670, 'ground').setScale(3).refreshBody();
-        platforms.create(6600, 670, 'ground').setScale(3).refreshBody();
+        platforms.create(600, 670, 'ground').setAlpha(0).setScale(3).refreshBody();
+        platforms.create(1800, 670, 'ground').setAlpha(0).setScale(3).refreshBody();
+        platforms.create(3000, 670, 'ground').setAlpha(0).setScale(3).refreshBody();
+        platforms.create(4200, 670, 'ground').setAlpha(0).setScale(3).refreshBody();
+        platforms.create(5400, 670, 'ground').setAlpha(0).setScale(3).refreshBody();
+        platforms.create(6600, 670, 'ground').setAlpha(0).setScale(3).refreshBody();
 
         //  Now let's create some ledges
         platforms.create(600, 500, 'ground');
@@ -95,7 +95,7 @@ class LevelThree extends Phaser.Scene {
             setXY: { x: 12, y: 0, stepX: 250 }
         });
 
-        /*bombs.children.iterate(function(child) {
+       /* bombs.children.iterate(function(child) {
             child.setBounce(Phaser.Math.FloatBetween(0.1, 1));
             child.setCollideWorldBounds(true);
             child.setVelocity(Phaser.Math.Between(-200, 200), 20);
@@ -103,11 +103,11 @@ class LevelThree extends Phaser.Scene {
         });*/
 
         //  The score
-        scoreText = this.add.text(16, 150, 'score: 0', { fontSize: '32px', fill: '#000' });
+        scoreText = this.add.text(16, 50, 'score: 0', { fontSize: '32px', fill: '#000' });
         scoreText.setScrollFactor(0);
 
         // Next level
-        //this.add.text(5800, 300, 'SIGUIENTE NIVEL >>>', { fontSize: '36px', fill: '#000' });
+        this.add.text(5800, 300, 'SIGUIENTE NIVEL >>>', { fontSize: '36px', fill: '#000' });
 
         //  Collide the players and the stars with the platforms
         this.physics.add.collider(stars, platforms);
@@ -135,7 +135,7 @@ class LevelThree extends Phaser.Scene {
         }
 
         if (player.x >= 6300) {
-            this.scene.switch('creditsScene');
+            this.scene.switch('level_two');
             background_music.stop();
             return;
         }
@@ -341,6 +341,16 @@ function initPlayer1Animations() {
         }),
         frameRate: 4
     });
+
+    game.anims.create({
+        key: 'death',
+        frames: game.anims.generateFrameNames('player1', {
+            prefix: 'death', 
+            start: 1, 
+            end: 3
+        }),
+        frameRate: 4
+    });
 }
 
 function initPlayer2Animations() {
@@ -387,6 +397,16 @@ function initPlayer2Animations() {
         frameRate: 5,
         repeat: 0
     });
+
+    game.anims.create({
+        key: 'death_p2',
+        frames: game.anims.generateFrameNames('player2', {
+            prefix: 'death', 
+            start: 2, 
+            end: 4
+        }),
+        frameRate: 4
+    });
 }
 
-export default LevelThree;
+export default LevelOne;

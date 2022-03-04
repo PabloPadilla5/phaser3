@@ -1,8 +1,8 @@
-import TitleScene from './titleScreen';
+import TitleScene from './title_screen';
 import CreditsScene from './credits';
-import LevelOne from './levelOne';
-import LevelTwo from './levelTwo';
-import LevelThree from './levelThree';
+import LevelOne from './level_one';
+import LevelTwo from './level_two';
+import LevelThree from './level_three';
 
 var config = {
     type: Phaser.AUTO,
@@ -19,4 +19,4 @@ var config = {
 };
 
 var game = new Phaser.Game(config);
-game.scene.start('titleScene');
+game.scene.start('title_scene');

@@ -1,6 +1,6 @@
 class TitleScene extends Phaser.Scene {
     constructor() {
-        super("titleScene");
+        super("title_scene");
     }
 
     preload() {
@@ -19,12 +19,12 @@ class TitleScene extends Phaser.Scene {
         var creditsButton = this.add.text(100, 120, 'CRÉDITOS');
         creditsButton.setInteractive({ useHandCursor: true });
         creditsButton.on('pointerdown', () => {
-            this.scene.switch('creditsScene');
+            this.scene.switch('credits_scene');
         });
     }
 
     startGame() {
-        this.scene.switch('levelOne');
+        this.scene.switch('level_one');
     }
 }
 

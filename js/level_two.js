@@ -1,6 +1,6 @@
 class LevelTwo extends Phaser.Scene {
 	constructor() {
-		super('levelTwo');
+		super('level_two');
 	}
 
 	preload() {
@@ -136,7 +136,7 @@ class LevelTwo extends Phaser.Scene {
         }
 
         if (player.x >= 6300) {
-            this.scene.switch('levelThree');
+            this.scene.switch('level_three');
             background_music.stop();
             return;
         }
